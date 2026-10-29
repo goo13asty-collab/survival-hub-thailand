@@ -167,6 +167,28 @@
     }
 
     .links { display: grid; gap: 12px; }
+    
+.progress-track {
+  height: 12px;
+  background: #e2e9e2;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #245c43;
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.progress-text {
+  font-size: 14px;
+  font-weight: 700;
+}
+    
     .links a { color: #245c43; font-weight: 700; }
 
     footer {
@@ -325,10 +347,35 @@
         <label><input type="checkbox" data-id="documents"> สำเนาเอกสารสำคัญในซองกันน้ำ</label>
         <label><input type="checkbox" data-id="clothes"> เสื้อผ้าและอุปกรณ์กันฝน</label>
         <label><input type="checkbox" data-id="contacts"> เบอร์ฉุกเฉินและจุดนัดพบครอบครัว</label>
-        <div class="result">
-          เตรียมแล้ว <strong id="checkCount">0/9</strong> รายการ
-        </div>
-        <button id="resetChecklist" type="button">เริ่มเช็กลิสต์ใหม่</button>
+        
+<div class="result">
+  <div>ความพร้อมของอุปกรณ์ฉุกเฉิน</div>
+  <div class="big-number" id="checkPercent">0%</div>
+
+  <div
+    class="progress-track"
+    role="progressbar"
+    aria-label="ความคืบหน้าของเช็กลิสต์"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+    id="checkProgress">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <div class="progress-text">
+    เตรียมแล้ว <strong id="checkCount">0/9</strong> รายการ
+  </div>
+</div>
+
+<button id="exportChecklist" type="button">
+  ส่งออกข้อมูลสำรอง
+</button>
+
+<button id="resetChecklist" type="button">
+  เริ่มเช็กลิสต์ใหม่
+</button>
+
       </div>
     </section>
 
@@ -448,10 +495,18 @@
       updateCount();
     }
 
-    function updateCount() {
-      const checked = checkboxes.filter(box => box.checked).length;
-      $("checkCount").textContent = checked + "/" + checkboxes.length;
-    }
+    
+function updateCount() {
+  const checked = checkboxes.filter(box => box.checked).length;
+  const total = checkboxes.length;
+  const percent = Math.round((checked / total) * 100);
+
+  $("checkCount").textContent = checked + "/" + total;
+  $("checkPercent").textContent = percent + "%";
+  $("progressFill").style.width = percent + "%";
+  $("checkProgress").setAttribute("aria-valuenow", percent);
+}
+
 
     checkboxes.forEach(box => {
       box.addEventListener("change", () => {
@@ -473,6 +528,33 @@
       updateCount();
     });
 
+    
+$("exportChecklist").addEventListener("click", () => {
+  const backup = {
+    exportedAt: new Date().toISOString(),
+    items: {}
+  };
+
+  checkboxes.forEach(box => {
+    backup.items[box.dataset.id] = box.checked;
+  });
+
+  const file = new Blob(
+    [JSON.stringify(backup, null, 2)],
+    { type: "application/json;charset=utf-8" }
+  );
+
+  const url = URL.createObjectURL(file);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "survival-hub-checklist-backup.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
     loadChecklist();
     calculateWater();
   </script>
