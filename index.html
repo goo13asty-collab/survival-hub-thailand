@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b32">
+  <meta name="description" content="Survival Hub Thailand คู่มือเตรียมพร้อมรับมือภัยพิบัติ อาหาร น้ำ และการเอาชีวิตรอด">
+  <title>Survival Hub Thailand | เตรียมพร้อมเพื่อความปลอดภัย</title>
+  <style>
+    :root {
+      --green: #173b32;
+      --light: #e8f1e9;
+      --accent: #c8e6a5;
+      --text: #24332d;
+      --muted: #65736c;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: #f5f7f3;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    header {
+      background: var(--green);
+      color: white;
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo { font-weight: 800; font-size: 18px; }
+
+    nav { display: flex; gap: 14px; flex-wrap: wrap; }
+    nav a { text-decoration: none; font-size: 14px; }
+
+    .hero {
+      background: linear-gradient(135deg, #173b32, #315c49);
+      color: white;
+      padding: 48px 20px;
+    }
+
+    .hero-inner, main, footer {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 7vw, 48px);
+      line-height: 1.2;
+      margin: 0 0 16px;
+    }
+
+    .hero p { max-width: 600px; color: #e0ebe2; }
+
+    .search {
+      display: flex;
+      gap: 8px;
+      max-width: 580px;
+      margin-top: 24px;
+    }
+
+    input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #cbd5ce;
+      border-radius: 10px;
+      background: white;
+      color: #24332d;
+    }
+
+    button, .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 16px;
+      background: var(--accent);
+      color: #173b32;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    main { padding: 24px 16px 48px; }
+    section { margin: 28px 0; scroll-margin-top: 16px; }
+    h2 { font-size: 23px; margin-bottom: 8px; }
+    .muted { color: var(--muted); font-size: 14px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e0e7df;
+      border-radius: 16px;
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .symbol { font-size: 28px; }
+    .card p { margin: 5px 0 12px; font-size: 14px; }
+    .card a { color: #245c43; font-weight: 700; }
+
+    .notice {
+      padding: 16px;
+      border-radius: 12px;
+      background: #fff4d8;
+      border: 1px solid #ecd59b;
+      color: #59451c;
+    }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .field label { display: block; font-weight: 650; margin-bottom: 6px; }
+
+    .result {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 12px;
+    }
+
+    .big-number { font-size: 32px; font-weight: 800; }
+
+    .checklist label {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      align-items: flex-start;
+      border-bottom: 1px solid #edf0ec;
+    }
+
+    .checklist input {
+      width: 20px;
+      height: 20px;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .links { display: grid; gap: 12px; }
+    .links a { color: #245c43; font-weight: 700; }
+
+    footer {
+      padding: 28px 20px;
+      background: var(--green);
+      color: white;
+      font-size: 13px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 520px) {
+      .grid, .tool-row { grid-template-columns: 1fr; }
+      .hero { padding: 36px 18px; }
+      nav { gap: 10px; }
+      nav a { font-size: 13px; }
+      .search { flex-direction: column; }
+      .search button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">🛡️ SURVIVAL HUB</div>
+      <nav aria-label="เมนูหลัก">
+        <a href="#guides">คู่มือ</a>
+        <a href="#tools">เครื่องมือ</a>
+        <a href="#checklist">เช็กลิสต์</a>
+        <a href="#alerts">เตือนภัย</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <p>THAILAND EMERGENCY PREPAREDNESS</p>
+      <h1>พร้อมรับมือ<br>ก่อนสายเกินไป</h1>
+      <p>
+        คู่มือเตรียมพร้อมรับมือภัยพิบัติ การจัดเก็บอาหารและน้ำ
+        และวิธีดูแลตัวเองกับครอบครัวในสถานการณ์ฉุกเฉิน
+      </p>
+      <div class="search">
+        <input id="searchInput" type="search"
+          placeholder="ค้นหา เช่น น้ำท่วม อาหาร ไฟดับ"
+          aria-label="ค้นหาคู่มือ">
+        <button id="searchButton" type="button">ค้นหาคู่มือ</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="guides">
+      <h2>📚 คลังคู่มือเอาชีวิตรอด</h2>
+      <p class="muted">ความรู้พื้นฐานที่ควรเตรียมไว้ก่อนเกิดเหตุ</p>
+
+      <div class="grid" id="guideGrid">
+        <article class="card searchable" data-key="น้ำท่วม น้ำป่า อพยพ">
+          <div class="symbol">🌊</div>
+          <h3>รับมือน้ำท่วม</h3>
+          <p>เตรียมของจำเป็น หลีกเลี่ยงกระแสน้ำ และวางแผนอพยพ</p>
+          <a href="https://www.disaster.go.th/">ข้อมูลจากกรม ปภ. ↗</a>
+        </article>
+
+        <article class="card searchable" data-key="อาหาร น้ำดื่ม เสบียง">
+          <div class="symbol">🥫</div>
+          <h3>อาหารและน้ำสำรอง</h3>
+          <p>วางแผนอาหารที่เก็บได้นาน น้ำดื่มสะอาด และการจัดเก็บ</p>
+          <a href="#tools">คำนวณเสบียง ↓</a>
+        </article>
+
+        <article class="card searchable" data-key="กระเป๋าฉุกเฉิน ไฟฉาย ยา">
+          <div class="symbol">🎒</div>
+          <h3>กระเป๋าฉุกเฉิน</h3>
+          <p>น้ำ อาหาร ยาประจำตัว ไฟฉาย แบตเตอรี่ และเอกสารสำคัญ</p>
+          <a href="#checklist">เปิดเช็กลิสต์ ↓</a>
+        </article>
+
+        <article class="card searchable" data-key="ไฟดับ สื่อสาร แบตเตอรี่">
+          <div class="symbol">🔦</div>
+          <h3>ไฟดับและการสื่อสาร</h3>
+          <p>ประหยัดแบตเตอรี่ เตรียมไฟฉาย และติดตามข่าวจากแหล่งทางการ</p>
+          <a href="#alerts">แหล่งข้อมูลเตือนภัย ↓</a>
+        </article>
+
+        <article class="card searchable" data-key="แผ่นดินไหว อาคาร">
+          <div class="symbol">🏚️</div>
+          <h3>แผ่นดินไหว</h3>
+          <p>เรียนรู้วิธีป้องกันตัวระหว่างแรงสั่นสะเทือนและหลังเหตุการณ์</p>
+          <a href="https://www.tmd.go.th/">กรมอุตุนิยมวิทยา ↗</a>
+        </article>
+
+        <article class="card searchable" data-key="สงคราม หลบภัย อพยพ">
+          <div class="symbol">🧭</div>
+          <h3>การหลบภัยและอพยพ</h3>
+          <p>ติดตามคำสั่งทางการ วางแผนเส้นทาง และกำหนดจุดนัดพบ</p>
+          <a href="https://www.disaster.go.th/">ข้อมูลความปลอดภัย ↗</a>
+        </article>
+      </div>
+      <p id="noResults" class="muted hidden">ไม่พบคู่มือที่ตรงกับคำค้น ลองใช้คำอื่น</p>
+    </section>
+
+    <section id="tools">
+      <h2>🧮 เครื่องคำนวณน้ำดื่ม</h2>
+      <p class="muted">
+        เครื่องมือเบื้องต้นสำหรับวางแผนเสบียง
+        ไม่ใช่ปริมาณน้ำทั้งหมดที่ต้องใช้ในชีวิตประจำวัน
+      </p>
+      <div class="card">
+        <div class="tool-row">
+          <div class="field">
+            <label for="people">จำนวนคน</label>
+            <input id="people" type="number" min="1" max="100"
+              value="2" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="days">จำนวนวัน</label>
+            <input id="days" type="number" min="1" max="365"
+              value="7" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="perPerson">น้ำดื่ม (ลิตร/คน/วัน)</label>
+            <input id="perPerson" type="number" min="1" max="10"
+              value="3" inputmode="decimal">
+          </div>
+          <div class="field">
+            <label for="existing">น้ำที่มีแล้ว (ลิตร)</label>
+            <input id="existing" type="number" min="0" max="100000"
+              value="0" inputmode="decimal">
+          </div>
+        </div>
+        <button id="calculateButton" type="button">คำนวณปริมาณน้ำ</button>
+        <div class="result" aria-live="polite">
+          <div>ปริมาณน้ำดื่มที่ควรวางแผน</div>
+          <div class="big-number" id="totalWater">42 ลิตร</div>
+          <div>น้ำที่ต้องเตรียมเพิ่ม: <strong id="neededWater">42 ลิตร</strong></div>
+        </div>
+        <p class="muted">
+          ความต้องการจริงอาจสูงขึ้นตามอากาศ กิจกรรม สุขภาพ
+          และคำแนะนำของหน่วยงานสาธารณสุข ควรเตรียมน้ำสำหรับทำอาหาร
+          และสุขอนามัยแยกต่างหาก
+        </p>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <h2>🎒 เช็กลิสต์ชุดฉุกเฉิน</h2>
+      <p class="muted">ทำเครื่องหมายเมื่อเตรียมของแล้ว สถานะจะบันทึกในเบราว์เซอร์นี้</p>
+      <div class="card checklist" id="checkItems">
+        <label><input type="checkbox" data-id="water"> น้ำดื่มสำรองที่ปลอดภัย</label>
+        <label><input type="checkbox" data-id="food"> อาหารเก็บได้นานและพร้อมรับประทาน</label>
+        <label><input type="checkbox" data-id="medicine"> ยาประจำตัวและชุดปฐมพยาบาล</label>
+        <label><input type="checkbox" data-id="light"> ไฟฉายและแบตเตอรี่สำรอง</label>
+        <label><input type="checkbox" data-id="power"> โทรศัพท์และพาวเวอร์แบงก์</label>
+        <label><input type="checkbox" data-id="radio"> วิทยุหรือช่องทางรับข่าวสาร</label>
+        <label><input type="checkbox" data-id="documents"> สำเนาเอกสารสำคัญในซองกันน้ำ</label>
+        <label><input type="checkbox" data-id="clothes"> เสื้อผ้าและอุปกรณ์กันฝน</label>
+        <label><input type="checkbox" data-id="contacts"> เบอร์ฉุกเฉินและจุดนัดพบครอบครัว</label>
+        <div class="result">
+          เตรียมแล้ว <strong id="checkCount">0/9</strong> รายการ
+        </div>
+        <button id="resetChecklist" type="button">เริ่มเช็กลิสต์ใหม่</button>
+      </div>
+    </section>
+
+    <section id="alerts">
+      <h2>📡 แหล่งข้อมูลเตือนภัย</h2>
+      <div class="notice">
+        <strong>โปรดทราบ:</strong> หน้านี้ยังไม่ได้เชื่อมระบบแจ้งเตือนสด
+        กรุณาเปิดประกาศจากหน่วยงานโดยตรงและตรวจสอบเวลาเผยแพร่
+        หากมีคำสั่งอพยพ ให้ปฏิบัติตามเจ้าหน้าที่ในพื้นที่
+      </div>
+      <div class="card links" style="margin-top:14px">
+        <div>
+          <strong>กรมป้องกันและบรรเทาสาธารณภัย</strong><br>
+          <a href="https://www.disaster.go.th/" target="_blank" rel="noopener">
+            เปิดเว็บไซต์ ปภ. ↗
+          </a>
+        </div>
+        <div>
+          <strong>กรมอุตุนิยมวิทยา</strong><br>
+          <a href="https://www.tmd.go.th/" target="_blank" rel="noopener">
+            ตรวจสอบสภาพอากาศและประกาศ ↗
+          </a>
+        </div>
+        <div>
+          <strong>สถาบันการแพทย์ฉุกเฉินแห่งชาติ</strong><br>
+          <a href="https://www.niems.go.th/" target="_blank" rel="noopener">
+            ข้อมูลการแพทย์ฉุกเฉิน ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>⚠️ หลักความปลอดภัย</h2>
+      <div class="notice">
+        อย่าเดินหรือขับรถฝ่ากระแสน้ำท่วมที่อันตราย
+        ห้ามใช้เตาถ่านหรือเครื่องกำเนิดไฟฟ้าในพื้นที่ปิด
+        และอย่าดื่มน้ำที่ไม่มั่นใจว่าปลอดภัย
+        คู่มือนี้ไม่แทนประกาศเตือนภัยหรือคำแนะนำจากผู้เชี่ยวชาญ
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>SURVIVAL HUB THAILAND</strong>
+      <p>เรียนรู้วันนี้ เพื่อเตรียมพร้อมในวันฉุกเฉิน</p>
+      <p>เว็บไซต์ให้ความรู้เบื้องต้น ไม่ใช่ระบบเตือนภัยอย่างเป็นทางการ</p>
+    </div>
+  </footer>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    // Search guides
+    function searchGuides() {
+      const query = $("searchInput").value.trim().toLowerCase();
+      let found = 0;
+
+      document.querySelectorAll(".searchable").forEach(card => {
+        const content = (card.innerText + " " + card.dataset.key).toLowerCase();
+        const match = content.includes(query);
+        card.classList.toggle("hidden", !match);
+        if (match) found++;
+      });
+
+      $("noResults").classList.toggle("hidden", found > 0);
+      $("guides").scrollIntoView({ behavior: "smooth" });
+    }
+
+    $("searchButton").addEventListener("click", searchGuides);
+    $("searchInput").addEventListener("keydown", event => {
+      if (event.key === "Enter") searchGuides();
+    });
+
+    // Water calculator
+    function calculateWater() {
+      const people = Number($("people").value);
+      const days = Number($("days").value);
+      const perPerson = Number($("perPerson").value);
+      const existing = Number($("existing").value);
+
+      if (![people, days, perPerson, existing].every(Number.isFinite) ||
+          people < 1 || people > 100 ||
+          days < 1 || days > 365 ||
+          perPerson < 1 || perPerson > 10 ||
+          existing < 0 || existing > 100000) {
+        alert("กรุณากรอกตัวเลขในช่วงที่กำหนด");
+        return;
+      }
+
+      const total = people * days * perPerson;
+      const needed = Math.max(0, total - existing);
+
+      $("totalWater").textContent = total.toLocaleString("th-TH") + " ลิตร";
+      $("neededWater").textContent = needed.toLocaleString("th-TH") + " ลิตร";
+    }
+
+    $("calculateButton").addEventListener("click", calculateWater);
+    ["people", "days", "perPerson", "existing"].forEach(id => {
+      $(id).addEventListener("input", calculateWater);
+    });
+
+    // Checklist stored on this device/browser
+    const checkboxes = [...document.querySelectorAll("#checkItems input[data-id]")];
+    const storageKey = "survivalHubChecklistV1";
+
+    function loadChecklist() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        checkboxes.forEach(box => {
+          box.checked = saved[box.dataset.id] === true;
+        });
+      } catch (error) {
+        // The checklist still works for the current page session.
+      }
+      updateCount();
+    }
+
+    function updateCount() {
+      const checked = checkboxes.filter(box => box.checked).length;
+      $("checkCount").textContent = checked + "/" + checkboxes.length;
+    }
+
+    checkboxes.forEach(box => {
+      box.addEventListener("change", () => {
+        try {
+          const saved = {};
+          checkboxes.forEach(item => saved[item.dataset.id] = item.checked);
+          localStorage.setItem(storageKey, JSON.stringify(saved));
+        } catch (error) {
+          // Saving may be unavailable in some browser modes.
+        }
+        updateCount();
+      });
+    });
+
+    $("resetChecklist").addEventListener("click", () => {
+      if (!confirm("ต้องการล้างสถานะเช็กลิสต์ทั้งหมดหรือไม่?")) return;
+      checkboxes.forEach(box => box.checked = false);
+      try { localStorage.removeItem(storageKey); } catch (error) {}
+      updateCount();
+    });
+
+    loadChecklist();
+    calculateWater();
+  </script>
+</body>
+  </html>
+
